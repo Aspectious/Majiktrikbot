@@ -1,0 +1,21 @@
+{
+  "name": "Discord-Bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "node": "^13.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "keywords": [],
+  "author": "AspectRtaio3",
+  "license": "ISC"
+}
