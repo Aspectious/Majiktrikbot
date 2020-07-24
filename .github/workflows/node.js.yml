@@ -26,5 +26,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npm run start --if-present
     - run: node index.js
