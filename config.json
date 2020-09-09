@@ -1,7 +1,8 @@
 {
 	"prefix": ">",
-	"token": "NjQ2NDQxNTgzMTc2MDU2ODQy.XkhpQA.u23H0KqHNJFdmdss0k2eodGZGmw",
-	"ver": " v1.5.1",
-	"latest_log_header": "Bug Fix",
-	"latest_log": "Fixed The Quote Error ex:'> hey', did some other commands fixes"
+	"Status": "status | >help",
+	"token": "Githubdoesnothostmajiksoyoudonotneedtoknow",
+	"ver": " v1.7.4",
+	"latest_log_header": "Bakwards",
+	"latest_log": "'Yaaaa. It's Rewind Time'"
 }
