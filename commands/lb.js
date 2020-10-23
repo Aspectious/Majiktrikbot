@@ -15,7 +15,6 @@ module.exports = {
     .setTitle('Top 10 (Global) Leaderboard')
     for (i = 0; i < 10; i++) {
         const usr = top10[i]
-        console.log(usr)
         try {
         var usrtotl = money[usr].total
         } catch {

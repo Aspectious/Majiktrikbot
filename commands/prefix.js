@@ -15,8 +15,8 @@ module.exports = {
             message.channel.send(lembed)
             return
         }
-        if(!message.member.hasPermission(['MANAGE_GUILD', 'ADMINISTRATOR'])) {
-            message.channel.send(`no. I(or you) don't Feel Like it`)
+        if(!message.member.hasPermission(['MANAGE_GUILD'], true, true)) {
+            message.channel.send(`no. I(or you) don't Feel Like it. or you dont have permission.`)
             return
         }
         cprfx [message.guild.id] = {

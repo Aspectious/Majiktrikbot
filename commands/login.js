@@ -6,7 +6,6 @@ module.exports = {
         const { latest_log } = require('../config.json');
         const { latest_log_header } = require('../config.json');
         const dev1 = '637792429642088450'
-        const dev2 = '667120019427033108'
         const Discord = require('discord.js');
     if ((message.author.id == dev1)||(message.author.id == dev2)) {
     message.channel.send(`Good Morning doctor <@` + message.author.id + `>, This is Majik. What would you like to do today?`);

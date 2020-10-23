@@ -24,20 +24,28 @@ module.exports = {
         try {
             var amount = parseInt(args[0])
         } catch {
-            const notanumbrembd = new Discord.MessageEmbed()
-            .setColor('#ff0000')
-            .setTitle('Enter a Number')
-            .setDescription(`Sorry, This isn't a Word Bank.`)
-            message.channel.send(notanumbrembd)
-            return
+            if (args[0].toLowerCase() === 'all') {
+                var amount = oldwallet
+            } else {
+                const notanumbrembd = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setTitle('Enter a Number')
+                .setDescription(`Sorry, This isn't a Word Bank.`)
+                message.channel.send(notanumbrembd)
+                return
+            }
         }
         if (isNaN(amount)) {
-            const notanumbrembd = new Discord.MessageEmbed()
-            .setColor('#ff0000')
-            .setTitle('Enter a Number')
-            .setDescription(`Sorry, This isn't a Word Bank.`)
-            message.channel.send(notanumbrembd)
-            return
+            if (args[0].toLowerCase() === 'all') {
+                var amount = oldwallet
+            } else {
+                const notanumbrembd = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setTitle('Enter a Number')
+                .setDescription(`Sorry, This isn't a Word Bank.`)
+                message.channel.send(notanumbrembd)
+                return
+            }
         }
         money[message.author.id] = {
             wallet: oldwallet - amount,

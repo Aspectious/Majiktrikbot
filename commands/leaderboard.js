@@ -23,10 +23,10 @@ module.exports = {
         top10bed.addField(`# ${i + 1}: $${usrtotl}`, `<@${usr}>`)
     }
     try {
-        var authortotal = money[message.author.id].total
-        } catch {
-        var authortotal = 0
-        }
+    var authortotal = money[message.author.id].total
+    } catch {
+    var authortotal = 0
+    }
     top10bed.addField('\u200b', '\u200b')
     top10bed.addField(`# ${top10.indexOf(message.author.id) + 1}: $${authortotal}`, `$<@${message.author.id}>`)
     message.channel.send(top10bed)
