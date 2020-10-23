@@ -55,7 +55,7 @@ rdfilesync('./lib/data/guilddata.json')
 rdfilesync('./ai.js')
 var ai = require('./ai.js')
 updateStatus()
-console.log(`devmode = ${devmode}`)
+console.log(colors.bold('All Systems active, Marking as READY'))
 });
 function getServerCache(id) {
 	return client.guilds.cache.get(id)
@@ -91,8 +91,6 @@ client.on('message', message => {
 	} catch (error) {
 		if (error instanceof TypeError) {
 			if (error.message === `Cannot read property 'execute' of undefined`) {
-			message.reply('Unknown Command. Do >help For help.')
-		console.log('UH OH! A UNDEFINED EXECUTE ERROR JOINS THE BATTLE! ' + error.message);
 			return;
 		}
 		message.reply(`An unknown Error Occured.`);
@@ -168,6 +166,7 @@ return
 			message.channel.send(devtoggl)
 			return
 	}
+
 	if (message.content.startsWith('>say')) {
 		if (message.member.roles.cache.get('685364882828427292')) {
 			message.channel.send(args)
@@ -211,8 +210,6 @@ try {
 } catch (error) {
 	if (error instanceof TypeError) {
 		if (error.message === `Cannot read property 'execute' of undefined`) {
-			message.reply('Unknown Command. Do >help For help.')
-			console.log('UH OH! A UNDEFINED EXECUTE ERROR JOINS THE BATTLE! ' + error.message);
 			return;
 		}
 		message.reply(`An unknown Error Occured.`);
