@@ -47,6 +47,13 @@ module.exports = {
                 return
             }
         }
+        if (amount > 25000000) {
+            const nono =  new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('no.')
+            .setDescription("Number too large ( ͡° ͜ʖ ͡°). But seriously, don't. You may only Deposit/Withdraw $25,000,000 at a time.")
+            return message.channel.send(nono)
+        }
         money[message.author.id] = {
             wallet: oldwallet - amount,
             bank: oldbank + amount,
