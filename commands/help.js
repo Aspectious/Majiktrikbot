@@ -145,6 +145,8 @@ function spunish() {
 	.setTitle('Punishment')
 	.setDescription('I can do it for you!')
 	.addField('>ban', 'You know what this does', true)
+	.addField('>kick', 'A work in Progress.', true)
+	.addField('>warn', 'A work in Progress.', true)
 	message.channel.send(S_Punishment).then(punishmsg => {
 		punishmsg.react('⬅️')
 		const filter = (reaction, user) => {
