@@ -25,6 +25,11 @@ module.exports = {
     } catch {
         Data.addField('Prefix', '>', true)
     }
+    try {
+        Data.addField('Mute Role', GuildData[GuildID].muterole, true)
+    } catch {
+        Data.addField('Mute Role', 'none', true)
+    }
     const replyMessage = message.channel.send(FetchingEmbed).then(msg => {
         msg.edit(Data)
     })
