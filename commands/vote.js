@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'vote',
+    name: 'vote', 
     description: 'votess',
     execute(message, args){
         const Discord = require('discord.js');
@@ -7,7 +7,7 @@ module.exports = {
         const vote = new Discord.MessageEmbed()
             .setColor("#fefefe")
             .setTitle(`**Poll**`)
-            .setAuthor(message.author.username, message.author.avatarURL)
+            .setAuthor(message.author.username, message.author.avatarURL())
             .setDescription(messageable);
             message.channel.send(vote)
             .then(function (msg) {
