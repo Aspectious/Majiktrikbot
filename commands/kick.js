@@ -3,7 +3,7 @@ module.exports = {
     execute(message, args) {
         const Discord = require('discord.js')
         const Target = message.mentions.members.first()
-        if (!message.member.hasPermission(['KICK_MEMBERS', { checkAdmin: true, checkOwner: true }])) {
+        if (!message.member.hasPermission('KICK_MEMBERS', { checkAdmin: true, checkOwner: true })) {
             const nonoembed = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('Not Authorized')
@@ -31,7 +31,7 @@ module.exports = {
         }).catch(() => {
             const uhoh = new Discord.MessageEmbed()
             .setColor('#ff0000')
-            .setTitle("An error Occured")
+            .setTitle("An error Occured, or they cannot be kicked.")
              message.channel.send(uhoh)
         })
     }
