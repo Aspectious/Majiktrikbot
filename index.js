@@ -6,7 +6,7 @@ const { info, error } = require('console');
 const colors = require('colors');
 var devmode = false;
 console.clear();
-console.log(`MajikTrikBot${ver}, Refreshing Files and (re)Booting`)
+console.log(`MajikTrikBot ${ver}, Refreshing Files and (re)Booting`)
 const workcooldown = new Set()
 const cprfxs = require('./lib/data/guilddata.json')
 function rdfilesync(path) {
