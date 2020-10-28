@@ -15,6 +15,8 @@ function rdfilesync(path) {
 	console.log(colors.green(`Loaded File ${path}.`))
 	}
 
+
+
 rdfilesync('./config.json')
 const client = new Discord.Client()
 client.commands = new Discord.Collection();
@@ -70,8 +72,7 @@ client.on('shardDisconnect', (event, id) => {
 	console.log(`Destroying Maager... Done.`)
 	console.log('Have a Nice Day!');
 })
-
-
+//Anti-Dank memer
 //Message Handeller. Big. CHunky. Lollable.
 client.on('message', message => {
 	if(message.author.id === client.user.id) return;
