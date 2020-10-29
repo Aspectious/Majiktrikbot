@@ -9,14 +9,13 @@ function cover() {
 		.setColor('#fefefe')
 		.setImage('')
 		.setTitle('**MAJIKTRIKBOT HELP**')
-		.setAuthor('MajikTrikBot' + ver, 'https://cdn.discordapp.com/avatars/646441583176056842/3a225a4d8ea65147d1e7090555ba772d.png?size=256')
-		.setDescription(`Our commands are listed after this page. If you would like to contact us, get the latest updates, report an error or bug, or just want to join our community, do so below or right here => [Join](https://discord.gg/Vqra7ZQ 'Majiktrikbot Official')`)
+		.setAuthor('MajikTrikBot ' + ver, message.client.user.avatarURL())
 		.addField('\u200b', '\u200b')
 		.addField(`Latest Update`, ver, true)
 		.addField(`Join Our Community!`, `[Join](https://discord.gg/Vqra7ZQ 'Majiktrikbot Official')`, true)
 		.addField(`Check out our Website!`, `[Website](https://sites.google.com/view/majiktrikbot 'Majiktrikbot Website(WIP)')`, true)
 		.setTimestamp()
-		.setFooter('Help Page 1 of 1', 'https://cdn.discordapp.com/avatars/646441583176056842/3a225a4d8ea65147d1e7090555ba772d.png?size=256')
+		.setFooter('Help Page 1 of 1', message.client.user.avatarURL())
 		message.channel.send(title).then(covermsg => {
 			covermsg.react('➡️')
 			const filter = (reaction, user) => {
@@ -33,7 +32,7 @@ function cover() {
 	function Sgeneral() {
 		const S_general = new Discord.MessageEmbed()
 	.setColor('#a3a3a3')
-	.setTitle('General / Information')
+	.setTitle('General / Information', message.client.user.avatarURL())
 	.setDescription(`Boooooooooooooooooring.`)
 	.addField('>help', 'This Very Screen', true)
 	.addField('>clear', 'Clears. add -s for silence', true)
@@ -75,7 +74,7 @@ function cover() {
 	function Sgames() {
 		const S_Games = new Discord.MessageEmbed()
 		.setColor('#0000FF')
-		.setTitle('Fun / Games')
+		.setTitle('Fun / Games', message.client.user.avatarURL())
 		.setDescription(`WHIPEE!`)
 		.addField('>games', 'Shows list of games', true)
 		.addField('>claim', 'Mine Now', true)
@@ -109,7 +108,7 @@ function cover() {
 function Smoney() {
 const S_Money = new Discord.MessageEmbed()
 .setColor('#00FF00')
-.setTitle('Economy / Money')
+.setTitle('Economy / Money', message.client.user.avatarURL())
 .setDescription(`Money Printer go brrrrr`)
 .addField(`>Money`, `Shows ya Money`, true)
 .addField(`>work`, `Get a Job!`, true)
@@ -142,7 +141,7 @@ message.channel.send(S_Money).then(moneymsg => {
 function spunish() {
 	const S_Punishment = new Discord.MessageEmbed()
 	.setColor('#FF0000')
-	.setTitle('Punishment')
+	.setTitle('Punishment', message.client.user.avatarURL())
 	.setDescription('I can do it for you!')
 	.addField('>ban', 'You know what this does', true)
 	.addField('>kick', 'A work in Progress.', true)

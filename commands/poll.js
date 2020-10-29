@@ -6,7 +6,7 @@ module.exports = {
         messageable = args.slice(1,args.length).join(" ");
         const vote = new Discord.MessageEmbed()
             .setColor("#fefefe")
-            .setTitle(`**Poll**`)
+            .setTitle(`**Poll** - ${args[0]} Seconds`)
             .setAuthor(message.author.username, message.author.avatarURL())
             .setDescription(messageable);
             if (isNaN(args[0])){

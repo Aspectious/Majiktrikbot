@@ -85,6 +85,7 @@ client.on('message', message => {
 	}
 	if (message.content.startsWith('>help') || message.content.startsWith('>prefix')) {
 	let prefix = '>'
+	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	try {
 		client.commands.get(command).execute(message, args);
@@ -209,6 +210,8 @@ try {
 	client.commands.get(command).execute(message, args);
 } catch (error) {
 	if (error instanceof TypeError) {
+		console.log(TypeError.fileName)
+		console.log(TypeError.lineNumber)
 		if (error.message === `Cannot read property 'execute' of undefined`) {
 			return;
 		}
@@ -220,6 +223,9 @@ try {
 	console.log(`${message}`)
 	console.log(`Error Code: ${error.code}`)
 	console.log(`Error: ${error.message} `)
+	console.log(`File that Caused Error: ${error.fileName}`)
+	console.log(`Line of Error: ${error.lineNumber}`)
+	console.log(`Full error: ${error}`)
 	console.log("")
 	message.reply(`An unknown Error Occured.`);
 }
