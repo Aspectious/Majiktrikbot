@@ -85,7 +85,6 @@ client.on('message', message => {
 	}
 	if (message.content.startsWith('>help') || message.content.startsWith('>prefix')) {
 	let prefix = '>'
-	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	try {
 		client.commands.get(command).execute(message, args);
