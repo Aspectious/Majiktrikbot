@@ -23,7 +23,7 @@ module.exports = {
                 if (goodresponse == 1) Goodembed.setDescription(`You sneakily ran away with $${amount}.`)
                 if (goodresponse == 2) Goodembed.setDescription(`You break into someone's car. Instead of stealing the car, you steal $${amount}.`)
                 if (goodresponse == 3) Goodembed.setDescription(`You beat $${amount} out of Grandma before she beats $${amount} out of you.`)
-                if (goodresponse == 4) Goodembed.setDescription(`You stole a $${amount} computer from Bestest Buyers.`)
+                if (goodresponse == 4) Goodembed.setDescription(`You "borrowed" $${amount} from a bunch of Economy Bots. They Don't know what hit them.`)
                 if (goodresponse == 5) Goodembed.setDescription(`You dig up $${amount} from someone's couch at a party. It's yours now.`)
                 message.channel.send(Goodembed)
             }

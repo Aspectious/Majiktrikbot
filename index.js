@@ -84,30 +84,8 @@ client.on('message', message => {
 	var prefix = '>'
 	}
 	if (message.content.startsWith('>help') || message.content.startsWith('>prefix')) {
-	let prefix = '>'
-	const args = message.content.slice(prefix.length).split(/ +/);
-	const command = args.shift().toLowerCase();
-	try {
-		client.commands.get(command).execute(message, args);
-	} catch (error) {
-		if (error instanceof TypeError) {
-			if (error.message === `Cannot read property 'execute' of undefined`) {
-			return;
-		}
-		message.reply(`An unknown Error Occured.`);
+	var prefix = '>'
 	}
-	console.log(error.message);
-	console.log("")
-	console.log(colors.bgRed('[ Error Detector ]') + `[${message.guild.name} - ${message.guild.id}] ${message.author.tag}, ${message.author.id} at ${new Date()}`)
-	console.log(`${message}`)
-	console.log(`Error Code: ${error.code}`)
-	console.log(`Error: ${error.message} `)
-	console.log("")
-	message.reply(`An unknown Error Occured.`);
-}
-return
-	}
-
 	//non-autostopper now. lol.
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
@@ -215,7 +193,7 @@ try {
 		if (error.message === `Cannot read property 'execute' of undefined`) {
 			return;
 		}
-		message.reply(`An unknown Error Occured.`);
+		message.reply(`An error occured.`);
 	}
 	console.log(error.message);
 	console.log("")
@@ -231,8 +209,6 @@ try {
 }
 });
 client.login(token);
-
-
 
 
 

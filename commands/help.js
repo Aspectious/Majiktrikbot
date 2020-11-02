@@ -10,6 +10,7 @@ function cover() {
 		.setImage('')
 		.setTitle('**MAJIKTRIKBOT HELP**')
 		.setAuthor('MajikTrikBot ' + ver, message.client.user.avatarURL())
+		.addField("Hello There!", `Use the ⬅️ and ➡️ Reactions below to navigate through our Help list.`)
 		.addField('\u200b', '\u200b')
 		.addField(`Latest Update`, ver, true)
 		.addField(`Join Our Community!`, `[Join](https://discord.gg/Vqra7ZQ 'Majiktrikbot Official')`, true)
