@@ -64,6 +64,12 @@ function getServerCache(id) {
 }
 client.on('shardDisconnect', (event, id) => {
 	console.log(colors.red('[ EMERGENCY ]') + ` Shard ${id} Has Disconected from Discord and will no longer attempt to reconnect.`)
+	const WINDOWSloghook = new Discord.WebhookClient('735906374894223460','HsQALw2hCA-oB9_9d6xgsvKvWFioh-oYRPzb5-Lq5Sa6NPUVceKSL0LfOBITmcKj8TLq')
+const emergencyebed = new Discord.MessageEmbed()
+.setColor('#ff0000')
+.setTitle('This is Majiktrikbot here, we have an Emergency shutdown. Repeat, Emergency Shutdown')
+.setDescription(`Shard ${id} Has Disconected from Discord and will no longer attempt to reconnect.`)
+WINDOWSloghook.send(emergencyebed)
 	console.log('Cutting Connection... Done.')
 	console.log('Stopping Listener From Listening... Done.')
 	console.log('Unloading Files... Done.')
