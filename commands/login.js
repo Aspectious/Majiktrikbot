@@ -6,9 +6,10 @@ module.exports = {
         const { latest_log } = require('../config.json');
         const { latest_log_header } = require('../config.json');
         const dev1 = '637792429642088450'
+        const dev2 = "564065545201254400"
         const Discord = require('discord.js');
     if ((message.author.id == dev1)||(message.author.id == dev2)) {
-    message.channel.send(`Good Morning doctor <@` + message.author.id + `>, This is Majik. What would you like to do today?`);
+    message.channel.send(`Good Morning doctor <@` + message.author.id + `>, This is Majik. What would you like to do today? webhook client: ${message.client.ws.status}`);
     //First Collector Session, for u dum dums
     const updatefilter = m => m.content.includes('update');
     const updatecollector = message.channel.createMessageCollector(updatefilter, { time: 15000 });

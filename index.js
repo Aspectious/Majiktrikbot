@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 rep = require('./lib/data/rep.json')
 const { token, ver, Status } = require('./config.json');
 const { info, error } = require('console');
+const readline = require("readline");
 const colors = require('colors');
 var devmode = false;
 console.clear();
@@ -52,13 +53,34 @@ client.on('guildCreate', (guild) => {
 client.on('channelPinsUpdate', (channel) => {
 	channel.send('ooh someone did somethin with a pin. shinyyyyyy.')
 })
+
+
+
+function cmdprompt() {
+	const cmd = readline.createInterface({
+		input: process.stdin,
+		output: process.stdout
+	});
+	cmd.question('\n>', function(prompt) {
+		console.log('understood.')
+		cmd.close();
+		cmdprompt()
+		})
+}
+
+
 client.once('ready', () => {
 rdfilesync('./lib/data/guilddata.json')
 rdfilesync('./ai.js')
 var ai = require('./ai.js')
 updateStatus()
 console.log(colors.bold('All Systems active, Marking as READY'))
+//CONSOLE COMMANDS (WIP)
+cmdprompt()
 });
+
+
+
 function getServerCache(id) {
 	return client.guilds.cache.get(id)
 }
@@ -77,6 +99,7 @@ WINDOWSloghook.send(emergencyebed)
 	console.log('Stopping Client... Done.')
 	console.log(`Destroying Maager... Done.`)
 	console.log('Have a Nice Day!');
+	console.log('\nBut WAIT!')
 })
 //Anti-Dank memer
 //Message Handeller. Big. CHunky. Lollable.
