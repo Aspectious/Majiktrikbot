@@ -10,7 +10,7 @@ module.exports = {
             .addField(`>automod setchannel [Channel Mention]`, `Sets Automod Channel (WIP)`, true)
             .addField(`>automod edit [key] [value]`, `Edits automod Sesttings (WIP)`, true)
             .addField(`>automod trigger <event>`, `Triggers automod Event`, true)
+            if(args[0] === "")
                 return message.channel.send(invalidsyntax)
-        }
     }
 }

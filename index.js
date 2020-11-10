@@ -99,7 +99,7 @@ WINDOWSloghook.send(emergencyebed)
 	console.log('Stopping Client... Done.')
 	console.log(`Destroying Maager... Done.`)
 	console.log('Have a Nice Day!');
-	console.log('\nBut WAIT!')
+	process.exit(0)
 })
 //Anti-Dank memer
 //Message Handeller. Big. CHunky. Lollable.
