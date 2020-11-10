@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 rep = require('./lib/data/rep.json')
-const { token, ver, Status } = require('./config.json');
+const { token, ver, Status } = require('../majikconfig.json');
 const { info, error } = require('console');
 const readline = require("readline");
 const colors = require('colors');
@@ -18,7 +18,7 @@ function rdfilesync(path) {
 
 
 
-rdfilesync('./config.json')
+rdfilesync('../majikconfig.json')
 const client = new Discord.Client()
 client.commands = new Discord.Collection();
 const crimecooldown = new Set()
