@@ -76,7 +76,6 @@ var ai = require('./ai.js')
 updateStatus()
 console.log(colors.bold('All Systems active, Marking as READY'))
 //CONSOLE COMMANDS (WIP)
-cmdprompt()
 });
 
 
