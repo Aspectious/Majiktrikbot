@@ -2,7 +2,7 @@ module.exports = {
 	name: 'help',
 	description: 'Help Embed',
 	execute(message, args) {
-const { ver } = require('../config.json');
+const { ver } = require('../../majikconfig.json');
 const Discord = require('discord.js');
 function cover() {
 	const title = new Discord.MessageEmbed()
