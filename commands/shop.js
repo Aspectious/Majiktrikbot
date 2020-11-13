@@ -9,7 +9,7 @@ module.exports = {
         .setTitle('Global Store')
         .setAuthor(message.author.tag, message.author.avatarURL())
         .setDescription('This is the Global Store. Expensive.')
-        .addField(`Nothing here :(`, `\u200b`, true)
+        .addField(`Backpack Expander`, `nothing....`, true)
         .setTimestamp()
         .setFooter('Globular Economy')
         message.channel.send(shopbed)

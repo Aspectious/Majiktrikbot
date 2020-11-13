@@ -149,17 +149,43 @@ function spunish() {
 	.addField('>warn', 'A work in Progress.', true)
 	message.channel.send(S_Punishment).then(punishmsg => {
 		punishmsg.react('⬅️')
-		const filter = (reaction, user) => {
+		punishmsg.react('➡️')
+		const punishfilter = (reaction, user) => {
 			return reaction.emoji.name === '⬅️' && user.id === message.author.id;
 		};
-		const collector = punishmsg.createReactionCollector(filter, { max: 1 });
-		collector.on('collect', collected => {
+		const rightpunishfilter = (reaction, user) => {
+			return reaction.emoji.name === '➡️' && user.id === message.author.id;
+		};
+		const punishcollector = punishmsg.createReactionCollector(punishfilter, { max: 1 });
+		punishcollector.on('collect', collected => {
 			Smoney()
+			punishmsg.delete().catch(err =>{if (err) throw err})
+		})
+		const rightpunishcollector = punishmsg.createReactionCollector(rightpunishfilter, { max: 1, time: 60000 });
+		rightpunishcollector.on('collect', collected => {
+			sgov()
 			punishmsg.delete().catch(err =>{if (err) throw err})
 			
 		})
 	})
-	}	
+	}
+function sgov() {
+const S_GOVERNMENT = new Discord.MessageEmbed()
+.setColor('#fefefe')
+.setTitle('Server Government (WIP)')
+.setDescription('Manage your server the way YOU and THEY want it.')
+message.channel.send(S_GOVERNMENT).then(govmsg => {
+	govmsg.react('⬅️')
+	const LEFTGOVFILTER = (reaction, user) => {
+		return reaction.emoji.name === '⬅️' && user.id === message.author.id;
+	};
+	const leftgovcollector = govmsg.createReactionCollector(LEFTGOVFILTER, { max: 1 });
+		leftgovcollector.on('collect', collected => {
+			spunish()
+			govmsg.delete().catch(err =>{if (err) throw err})
+		})
+})
+}	
 cover()
 	},
 }

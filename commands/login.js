@@ -2,12 +2,64 @@ module.exports = {
     name: 'login',
     description: 'Login to a Gateway of Magic!',
     execute(message, args) {
-        const { ver } = require('../config.json');
-        const { latest_log } = require('../config.json');
-        const { latest_log_header } = require('../config.json');
-        const dev1 = '637792429642088450'
-        const dev2 = "564065545201254400"
+        const { latest_log_header, latest_log, ver, dev_id_list } = require('../../majikconfig.json');
         const Discord = require('discord.js');
+        if (message.guild) return message.channel.send(`Please Peform this Command in a Dm, <@${message.author.id}>`)
+
+        if (!dev_id_list.includes(message.author.id)) {
+        const accessdenied = new Discord.MessageEmbed()
+        .setColor('#ff0000')
+        .setTitle('❌ Access Denied')
+        .setDescription('Only Verified and Saved Majiktrikbot Developers may use this command!')
+        console.log(`${message.author.username}[${message.author.id}] Attempted to access Command Interpreter. Attempt Failed.`)
+        return message.channel.send(accessdenied)
+        } else {
+        const sessionstartembed = new Discord.MessageEmbed()
+        .setColor('#00ff00')
+        .setTitle(`Welcome, <@${message.author.id}>!`)
+        .setDescription('Your Session with our Command Interpreter has now begun. You may stop the Interpreter at any time with STOP. Your session automatically ends in 30m.')
+        console.log(`${message.author.username}[${message.author.id}] Successfully Began Command Interpreter Session.`)
+        message.channel.send(sessionstartembed)
+        }
+
+        //Command Interpreter Code.
+
+        //Message Collector Initalization.
+        const cmdlist = ['help', 'stop', 'close', 'end', 'action']
+        const collector = message.channel.createMessageCollector(msg => cmdlist.includes(msg.content), { time: 1800000 })
+
+        collector.on('collect', msg => {
+        if(msg.content === "help") {
+            message.channel.send(`IAN Majiktrikbot Branch Terminal Command Interpreter [Version ${ver}]`)
+            message.channel.send(`\nFor detailed desctiptions and uses of each command, do HELP (command)`)
+            return
+        }
+        if((msg.content === "stop") || (msg.content === "end") || (msg.content === "close")) {
+            const stopsesion = new Discord.MessageEmbed()
+            .setColor('#ff0000')
+            .setTitle('Session Ended')
+            .setDescription('Your Command Interpreter Session has ended due to MANUAL_EXIT.')
+            collector.stop('MANUAL_END')
+            return message.channel.send(stopsesion)
+        }
+        })
+
+        collector.on('end', (collected, reason) => {
+        if (reason === "time") {
+        const sessionend = new Discord.MessageEmbed()
+        .setColor('#ff0000')
+        .setTitle('Session Ended')
+        .setDescription('Your Command Interpreter Session has ended due to TIME_OUT.')
+        return message.channel.send(sessionend)
+        }
+        console.log(`${message.author.username}[${message.author.id}] Ended Command Interpreter Session with reason ${reason}. User Ordered ${collected.size} Commands to Interpreter.`)
+        })
+
+
+
+
+
+    return
     if ((message.author.id == dev1)||(message.author.id == dev2)) {
     message.channel.send(`Good Morning doctor <@` + message.author.id + `>, This is Majik. What would you like to do today? webhook client: ${message.client.ws.status}`);
     //First Collector Session, for u dum dums

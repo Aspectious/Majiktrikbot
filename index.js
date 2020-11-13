@@ -105,7 +105,9 @@ WINDOWSloghook.send(emergencyebed)
 client.on('message', message => {
 	if(message.author.id === client.user.id) return;
 	if (message.bot) return
-	if (!message.guild) return message.channel.send(`Uh, Nope. We don't Do Dms...... Yet....`)
+	if (!message.guild) {
+	if(!message.content.toLowerCase().startsWith(">login")) return
+	}
 	try {
 	var prefix = cprfxs[message.guild.id].prefix
 	} catch {
