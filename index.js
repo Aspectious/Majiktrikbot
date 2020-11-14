@@ -106,6 +106,7 @@ client.on('message', message => {
 	if(message.author.id === client.user.id) return;
 	if (message.bot) return
 	if (!message.guild) {
+		console.log(`DM: ${message.author.username}[${message.author.id}] > ${message}`)
 	if(!message.content.toLowerCase().startsWith(">login")) return
 	}
 	try {
