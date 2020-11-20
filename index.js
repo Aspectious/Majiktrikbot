@@ -74,6 +74,7 @@ rdfilesync('./lib/data/guilddata.json')
 rdfilesync('./ai.js')
 var ai = require('./ai.js')
 updateStatus()
+console.log(colors.gray(`All Systems active at ${new Date}`))
 console.log(colors.bold('All Systems active, Marking as READY'))
 //CONSOLE COMMANDS (WIP)
 });
@@ -117,18 +118,12 @@ client.on('message', message => {
 	if (message.content.startsWith('>help') || message.content.startsWith('>prefix')) {
 	var prefix = '>'
 	}
-	//non-autostopper now. lol.
-	const args = message.content.slice(prefix.length).split(/ +/);
-	const command = args.shift().toLowerCase();
 	updateStatus()
 	if (message.channel.id === '737148941652459572') {
 		var ai = require('./ai')
 		ai.start(message)
 	}
 	if(message.author.id === client.user.id) return;
-	if (command.guildOnly) {
-		return message.reply('I can\'t execute that command inside DMs!');
-	}
 	//done done
 		//Cooldowns. lol xd
 		if (message.content.toLowerCase().startsWith('>work')) {
@@ -144,7 +139,7 @@ client.on('message', message => {
 			setTimeout(() =>{workcooldown.delete(message.author.id)}, 15000)
 			}
 		}
-		if (message.content.toLowerCase().startsWith('>crime')) {
+		if ((message.content.toLowerCase().startsWith('>crime')) || (message.content.toLowerCase().startsWith('>steal'))) {
 			if (crimecooldown.has(`${message.author.id}`)) {
 			const nono = new Discord.MessageEmbed()
 			.setColor('#ff0000')
@@ -158,32 +153,6 @@ client.on('message', message => {
 			}
 		}
 		//done done
-	//devmode
-	if (message.content.startsWith('>dev')) {
-		if (!message.author.id == 637792429642088450) {
-			const noperope = new Discord.MessageEmbed()
-			.setColor('#ff0000')
-			.setTitle('Nope.')
-			.setDescription('Verified Majik devs can run this command. not you. This is to debug things.')
-			message.channel.send(noperope)
-			return
-		}
-			var devmode = !devmode
-			const devtoggl = new Discord.MessageEmbed()
-			.setColor('#0000ff')
-			.setTitle(`Global Varible Devmode now Set to ${devmode}`)
-			console.log(`Devmode = ${devmode}`)
-			message.channel.send(devtoggl)
-			return
-	}
-
-	if (message.content.startsWith('>say')) {
-		if (message.member.roles.cache.get('685364882828427292')) {
-			message.channel.send(args)
-			message.delete({reason: 'shhhh'})
-		}
-		return;
-	} 
 	if (message.content.startsWith('>write')) {
 		var newfilecontents = JSON.stringify(args, null, 2)
 		fs.writeFileSync('./write.json', newfilecontents)
@@ -216,11 +185,11 @@ client.on('message', message => {
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 try {
+	const args = message.content.slice(prefix.length).split(/ +/);
+	const command = args.shift().toLowerCase();
 	client.commands.get(command).execute(message, args);
 } catch (error) {
 	if (error instanceof TypeError) {
-		console.log(TypeError.fileName)
-		console.log(TypeError.lineNumber)
 		if (error.message === `Cannot read property 'execute' of undefined`) {
 			return;
 		}

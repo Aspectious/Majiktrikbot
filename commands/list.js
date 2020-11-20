@@ -1,7 +1,7 @@
 module.exports = {
     name: 'list',
     execute(message, args) {
-        const { ver } = require('../config.json')
+        const { ver } = require('../../majikconfig.json')
         const Discord = require('discord.js')
         const serverlist = new Discord.MessageEmbed()
         .setColor('#fefefe')

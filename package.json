@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "Node": "node index.js",
+    "Nodemon": "nodemon index.js"
   },
   "dependencies": {
     "discord.js": "^12.4.1",
