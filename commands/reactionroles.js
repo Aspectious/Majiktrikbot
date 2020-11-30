@@ -3,7 +3,7 @@ module.exports = {
     execute(message, args) {
     const Discord = require('discord.js')
 
-    if (!(args[0] === "add") && !(args[0] === "remove") && !(args[0] === "edit")) {
+    if (!(args[0] === "add") || !(args[0] === "remove") || !(args[0] === "edit")) {
     const FIRSTARGNOTFOUND = new Discord.MessageEmbed()
     .setColor('#ff0000')
     .setTitle('❌ Incorrect Synatx')

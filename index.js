@@ -5,17 +5,36 @@ const { token, ver, Status } = require('../majikconfig.json');
 const { info, error } = require('console');
 const readline = require("readline");
 const colors = require('colors');
+
+
+fs.unlink('./lib/data/latest.log', (err) => {
+	if (err) throw err
+})
+fs.appendFile('./lib/data/latest.log', "///START OF LOG FILE ///", (err) => {
+	if (err) throw err
+})
+
+function saveLog(msg) {
+	var msgsave = "\n" + msg
+	fs.appendFile('./lib/data/latest.log', msgsave, {encoding: "latin1", mode: 0o666, flag: "a"}, (err) => {
+		if (err) throw err
+	})
+	}
+
+
 var devmode = false;
 console.clear();
 console.log(`MajikTrikBot ${ver}, Refreshing Files and (re)Booting`)
+saveLog(`MajikTrikBot ${ver}, Refreshing Files and (re)Booting`)
 const workcooldown = new Set()
 const cprfxs = require('./lib/data/guilddata.json')
 function rdfilesync(path) {
 	console.log(colors.gray(`Loading ${path}...`))
+	saveLog(`Loading ${path}...`)
 	fs.readFileSync(path)
 	console.log(colors.green(`Loaded File ${path}.`))
+	saveLog(`Loaded File ${path}.`)
 	}
-
 
 
 rdfilesync('../majikconfig.json')
@@ -34,21 +53,26 @@ function updateStatus() {
 }
 client.on('shardDisconnect', (event, id) =>{
 	console.log(colors.red('[Alert] ') + `Shard ${id} Websocket Connection Disconected and Will no longer Reconnect with Event ${JSON.stringify(event)}.`)
+	saveLog(`[Alert] Shard ${id} Websocket Connection Disconected and Will no longer Reconnect with Event ${JSON.stringify(event)}.`)
 })
 client.on('warn', (info) => {
 	console.log(color.yellow('[Warning] ' + info))
+	saveLog(`[Warning] ${info}`)
 })
 client.on('debug', (info) => {
 	if (info.includes('Heartbeat')) {
 		return
 	}
 	console.log(colors.yellow('[' + new Date() + '] [Debug] ') + info)
+	saveLog(`[` + new Date() + `] [Debug] ${info}`)
 })
 client.on('guildDelete', (guild) => {
 	console.log(colors.red('[Alert] ') + `Bot Kicked or Guild deleted in guild "${guild}"(${guild.id}). Client/Shard's Guild count is now ${client.guilds.cache.size}.`)
+	saveLog(`[Alert] Bot Kicked or Guild deleted in guild "${guild}"(${guild.id}). Client/Shard's Guild count is now ${client.guilds.cache.size}.`)
 })
-client.on('guildCreate', (guild) => {
+client.on('guildCreate', (guild) => {	
 	console.log(colors.red('[Alert] ') + `Majiktrikbot Joined Guild "${guild}"(${guild.id}). Client/Shard's Guild Count is now ${client.guilds.cache.size}`)
+	saveLog(`[Alert] Majiktrikbot Joined Guild "${guild}"(${guild.id}). Client/Shard's Guild Count is now ${client.guilds.cache.size}`)
 })
 client.on('channelPinsUpdate', (channel) => {
 	channel.send('ooh someone did somethin with a pin. shinyyyyyy.')
@@ -75,7 +99,9 @@ rdfilesync('./ai.js')
 var ai = require('./ai.js')
 updateStatus()
 console.log(colors.gray(`All Systems active at ${new Date}`))
+saveLog(`All Systems active at ${new Date}`)
 console.log(colors.bold('All Systems active, Marking as READY'))
+saveLog(`All Systems active, Marking as READY`)
 //CONSOLE COMMANDS (WIP)
 });
 
@@ -86,6 +112,7 @@ function getServerCache(id) {
 }
 client.on('shardDisconnect', (event, id) => {
 	console.log(colors.red('[ EMERGENCY ]') + ` Shard ${id} Has Disconected from Discord and will no longer attempt to reconnect.`)
+	saveLog(`[ EMERGENCY ] Shard ${id} Has Disconected from Discord and will no longer attempt to reconnect.`)
 	const WINDOWSloghook = new Discord.WebhookClient('735906374894223460','HsQALw2hCA-oB9_9d6xgsvKvWFioh-oYRPzb5-Lq5Sa6NPUVceKSL0LfOBITmcKj8TLq')
 const emergencyebed = new Discord.MessageEmbed()
 .setColor('#ff0000')
@@ -208,60 +235,4 @@ try {
 	message.reply(`An unknown Error Occured.`);
 }
 });
-client.login(token);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+client.login(token)

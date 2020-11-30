@@ -1,0 +1,31 @@
+///START OF LOG FILE ///
+MajikTrikBot 1.12.0, Refreshing Files and (re)Booting
+Loading ../majikconfig.json...
+Loaded File ../majikconfig.json.
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] Provided token: NjQ2NDQxNTgzMTc2MDU2ODQy.XdRLow.***************************
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] Preparing to connect to the gateway...
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Manager] Fetched Gateway Information
+    URL: wss://gateway.discord.gg
+    Recommended Shards: 1
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Manager] Session Limit Information
+    Total: 1000
+    Remaining: 987
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Manager] Spawning shards: 0
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Shard 0] Setting a HELLO timeout for 20s.
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Shard 0] [CONNECT]
+    Gateway    : wss://gateway.discord.gg/
+    Version    : 6
+    Encoding   : json
+    Compression: none
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Shard 0] [CONNECTED] wss://gateway.discord.gg/?v=6&encoding=json in 222ms
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Shard 0] Clearing the HELLO timeout.
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Shard 0] Setting a heartbeat interval for 41250ms.
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Shard 0] [IDENTIFY] Shard 0/1
+[Mon Nov 30 2020 15:58:45 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Shard 0] [READY] Session b5f2304028b7c670667b460d17078964.
+[Mon Nov 30 2020 15:58:46 GMT-0500 (Eastern Standard Time)] [Debug] [WS => Shard 0] Shard received all its guilds. Marking as fully ready.
+Loaded File ./lib/data/guilddata.json.
+Loading ./lib/data/guilddata.json...
+Loading ./ai.js...
+Loaded File ./ai.js.
+All Systems active at Mon Nov 30 2020 15:58:46 GMT-0500 (Eastern Standard Time)
+All Systems active, Marking as READY

@@ -13,7 +13,7 @@ function cover() {
 		.addField("Hello There!", `Use the ⬅️ and ➡️ Reactions below to navigate through our Help list.`)
 		.addField('\u200b', '\u200b')
 		.addField(`Latest Update`, ver, true)
-		.addField(`Join Our Community!`, `[Join](https://discord.gg/Vqra7ZQ 'Majiktrikbot Official')`, true)
+		.addField(`Join Our Community!`, `[Join](https://discord.gg/7WMfHHBmSW 'Majiktrikbot Official')`, true)
 		.addField(`Check out our Website!`, `[Website](https://sites.google.com/view/majiktrikbot 'Majiktrikbot Website(WIP)')`, true)
 		.setTimestamp()
 		.setFooter('Help Page 1 of 1', message.client.user.avatarURL())
