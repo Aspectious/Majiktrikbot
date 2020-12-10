@@ -7,7 +7,7 @@ const readline = require("readline");
 const colors = require('colors');
 
 
-fs.unlink('./lib/data/latest.log', (err) => {
+fs.writeFile('./lib/data/latest.log', "///START OF LOG FILE ///", (err) => {
 	if (err) throw err
 })
 fs.appendFile('./lib/data/latest.log', "///START OF LOG FILE ///", (err) => {
@@ -158,12 +158,12 @@ client.on('message', message => {
 			const nono = new Discord.MessageEmbed()
 			.setColor('#ff0000')
 			.setTitle('⌛ Ah ah ah!')
-			.setDescription('Not so fast. We have cooldowns, you know. You have 15 Seconds left from when you last used that command.')
+			.setDescription('Not so fast. We have cooldowns, you know. You have 2 Minutes left from when you last used that command.')
 			message.channel.send(nono)
 			return
 			} else {
 			workcooldown.add(message.author.id)
-			setTimeout(() =>{workcooldown.delete(message.author.id)}, 15000)
+			setTimeout(() =>{workcooldown.delete(message.author.id)}, 120000)
 			}
 		}
 		if ((message.content.toLowerCase().startsWith('>crime')) || (message.content.toLowerCase().startsWith('>steal'))) {
