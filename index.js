@@ -49,7 +49,7 @@ for (const file of commandFiles) {
 
 }
 function updateStatus() {
-	client.user.setActivity(Status)
+	client.user.setPresence({ activity: { name: `${Status}`}, status: "online"})
 }
 client.on('shardDisconnect', (event, id) =>{
 	console.log(colors.red('[Alert] ') + `Shard ${id} Websocket Connection Disconected and Will no longer Reconnect with Event ${JSON.stringify(event)}.`)
