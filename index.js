@@ -234,4 +234,4 @@ try {
 	message.reply(`An unknown Error Occured.`);
 }
 });
-client.login(token)
+client.login("NjQ2NDQxNTgzMTc2MDU2ODQy.XdRLow.18IBvvNhAMh637PyYi_HVULhTDA")
