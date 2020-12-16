@@ -5,8 +5,7 @@ const { token, ver, Status } = require('../majikconfig.json');
 const { info, error } = require('console');
 const readline = require("readline");
 const colors = require('colors');
-
-
+var devmode = true
 fs.writeFile('./lib/data/latest.log', "///START OF LOG FILE ///", (err) => {
 	if (err) throw err
 })
