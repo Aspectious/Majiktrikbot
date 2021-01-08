@@ -234,4 +234,4 @@ try {
 	message.reply(`An unknown Error Occured.`);
 }
 });
-client.login(process.env.BOT_TOKEN)
+client.login(token)
