@@ -15,12 +15,13 @@ module.exports = {
     .setTitle('Top 10 (Global) Leaderboard')
     for (i = 0; i < 10; i++) {
         const usr = top10[i]
+        const usrpfp = message.Client.users.cache.get(usr)
         try {
         var usrtotl = money[usr].total
         } catch {
         var usrtotl = null
         }
-        top10bed.addField(`# ${i + 1}: $${usrtotl}`, `<@${usr}>`)
+        top10bed.addField(`# ${i + 1}: $${usrtotl}`, `${usrpfp.username}`)
     }
     try {
     var authortotal = money[message.author.id].total
