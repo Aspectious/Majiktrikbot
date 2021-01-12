@@ -233,5 +233,5 @@ try {
 	console.log("")
 	message.reply(`An unknown Error Occured.`);
 }
-});
+}); 
 client.login(token)
