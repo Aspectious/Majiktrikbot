@@ -1,5 +1,5 @@
-/node_modules
-/lib
-/.vs
-/.vscode
+node_modules
+lib
+.vs
+.vscode
 lib/data/money.json
