@@ -1,7 +1,7 @@
 {
-  "name": "Discord-Bot",
-  "version": "1.0.0",
-  "description": "",
+  "name": "majiktrikbot-alpha",
+  "version": "ref-alphaconfig.json",
+  "description": "Package for Majiktrikbot Alpha Development",
   "main": "index.js",
   "scripts": {
     "start": "node index",
@@ -9,14 +9,18 @@
     "Nodemon": "nodemon index.js"
   },
   "dependencies": {
-    "discord.js": "^12.4.1",
+    "chart.js": "^3.2.1",
+    "colors": "^1.4.0",
+    "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "node": "^13.8.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
   },
-  "keywords": [],
+  "keywords": [
+    "discord-bot"
+  ],
   "author": "AspectRtaio3",
   "license": "ISC"
 }

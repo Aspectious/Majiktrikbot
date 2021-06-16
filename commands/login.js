@@ -5,7 +5,7 @@ module.exports = {
         const { latest_log_header, latest_log, ver, dev_id_list } = require('../../majikconfig.json');
         const Discord = require('discord.js');
         if (message.guild) return message.channel.send(`Please Peform this Command in a Dm, <@${message.author.id}>`)
-
+        message.channel.send("hi")
         if (!dev_id_list.includes(message.author.id)) {
         const accessdenied = new Discord.MessageEmbed()
         .setColor('#ff0000')

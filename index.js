@@ -1,11 +1,33 @@
-const fs = require('fs');
+// Discord imports
 const Discord = require('discord.js');
-rep = require('./lib/data/rep.json')
-const { token, ver, Status } = require('../majikconfig.json');
-const { info, error } = require('console');
+
+// Node Imports
+const fs = require('fs');
 const readline = require("readline");
 const colors = require('colors');
-var devmode = true
+const { info, error } = require('console');
+
+// Internal Imports
+rep = require('./lib/data/rep.json')
+const { token } = require('../majikconfig.json');
+const { version, botStatus, displayVersion } = require("./config.json")
+const errorreport = require("./classes/errorreport");
+const events = require("./events/events")
+
+// Class
+class Majiktrikbot {
+
+constructor() {
+
+// Var Declaration
+var devmode;
+var devmode = false;
+this.majiktrikbot = {
+	commandsProcessed: 0,
+	errors: 0,
+}
+// Create Logger
+
 fs.writeFile('./lib/data/latest.log', "///START OF LOG FILE ///", (err) => {
 	if (err) throw err
 })
@@ -20,23 +42,14 @@ function saveLog(msg) {
 	})
 	}
 
-
-var devmode = false;
+// Console Stuff
 console.clear();
-console.log(`MajikTrikBot ${ver}, Refreshing Files and (re)Booting`)
-saveLog(`MajikTrikBot ${ver}, Refreshing Files and (re)Booting`)
+console.log(`${displayVersion} ${version}, Refreshing Files and (re)Booting`)
+saveLog(`${displayVersion} ${version}, Refreshing Files and (re)Booting`)
+
+// Init Stage
 const workcooldown = new Set()
 const cprfxs = require('./lib/data/guilddata.json')
-function rdfilesync(path) {
-	console.log(colors.gray(`Loading ${path}...`))
-	saveLog(`Loading ${path}...`)
-	fs.readFileSync(path)
-	console.log(colors.green(`Loaded File ${path}.`))
-	saveLog(`Loaded File ${path}.`)
-	}
-
-
-rdfilesync('../majikconfig.json')
 const client = new Discord.Client()
 client.commands = new Discord.Collection();
 const crimecooldown = new Set()
@@ -48,8 +61,11 @@ for (const file of commandFiles) {
 
 }
 function updateStatus() {
-	client.user.setPresence({ activity: { name: `${Status}`}, status: "online"})
+	client.user.setPresence({ activity: { name: `${botStatus}`}, status: "dnd"})
 }
+
+new events(client)
+
 client.on('shardDisconnect', (event, id) =>{
 	console.log(colors.red('[Alert] ') + `Shard ${id} Websocket Connection Disconected and Will no longer Reconnect with Event ${JSON.stringify(event)}.`)
 	saveLog(`[Alert] Shard ${id} Websocket Connection Disconected and Will no longer Reconnect with Event ${JSON.stringify(event)}.`)
@@ -59,12 +75,11 @@ client.on('warn', (info) => {
 	saveLog(`[Warning] ${info}`)
 })
 client.on('debug', (info) => {
-	if (info.includes('Heartbeat')) {
-		return
-	}
-	console.log(colors.yellow('[' + new Date() + '] [Debug] ') + info)
-	saveLog(`[` + new Date() + `] [Debug] ${info}`)
+	if (info.toLowerCase().includes('heartbeat')) return;
+		console.log(colors.yellow('[' + new Date() + '] [Debug] ') + info)
+		saveLog(`[` + new Date() + `] [Debug] ${info}`)
 })
+
 client.on('guildDelete', (guild) => {
 	console.log(colors.red('[Alert] ') + `Bot Kicked or Guild deleted in guild "${guild}"(${guild.id}). Client/Shard's Guild count is now ${client.guilds.cache.size}.`)
 	saveLog(`[Alert] Bot Kicked or Guild deleted in guild "${guild}"(${guild.id}). Client/Shard's Guild count is now ${client.guilds.cache.size}.`)
@@ -73,35 +88,29 @@ client.on('guildCreate', (guild) => {
 	console.log(colors.red('[Alert] ') + `Majiktrikbot Joined Guild "${guild}"(${guild.id}). Client/Shard's Guild Count is now ${client.guilds.cache.size}`)
 	saveLog(`[Alert] Majiktrikbot Joined Guild "${guild}"(${guild.id}). Client/Shard's Guild Count is now ${client.guilds.cache.size}`)
 })
-client.on('channelPinsUpdate', (channel) => {
-	channel.send('ooh someone did somethin with a pin. shinyyyyyy.')
-})
 
 
+// Old code don't mind me
 
-function cmdprompt() {
-	const cmd = readline.createInterface({
-		input: process.stdin,
-		output: process.stdout
-	});
-	cmd.question('\n>', function(prompt) {
-		console.log('understood.')
-		cmd.close();
-		cmdprompt()
-		})
-}
+//function cmdprompt() {
+//	const cmd = readline.createInterface({
+//		input: process.stdin,
+//		output: process.stdout
+//	});
+//	cmd.question('\n>', function(prompt) {
+//		console.log('understood.')
+//		cmd.close();
+//		cmdprompt()
+//		})
+//}
 
 
 client.once('ready', () => {
-rdfilesync('./lib/data/guilddata.json')
-rdfilesync('./ai.js')
-var ai = require('./ai.js')
-updateStatus()
-console.log(colors.gray(`All Systems active at ${new Date}`))
-saveLog(`All Systems active at ${new Date}`)
-console.log(colors.bold('All Systems active, Marking as READY'))
-saveLog(`All Systems active, Marking as READY`)
-//CONSOLE COMMANDS (WIP)
+	updateStatus()
+		console.log(colors.gray(`All Systems active at ${new Date}`))
+		saveLog(`All Systems active at ${new Date}`)
+		console.log(colors.bold('All Systems active, Marking as READY'))
+		saveLog(`All Systems active, Marking as READY`)
 });
 
 
@@ -127,23 +136,42 @@ WINDOWSloghook.send(emergencyebed)
 	console.log('Have a Nice Day!');
 	process.exit(0)
 })
+
+
+process.on("exit", (exitCode) => {
+console.error(colors.bgBlue(colors.white(colors.bold(colors.underline((
+	"                   IAN STUDIOS MAJIKTRIKBOT                        "
+ + "\n                                                                   "
+ + "\n     Oh dear. Something has gone Really, Really, REALLY Wrong.     "
+ + "\n         If you are seeing this the process is exiting.            "
+ + "\n                                                                   "
+ + "\n  The discord client has been stopped. Please restart the client.  "
+ + "\n                                                                   "
+ + "\n                       Have a Nice day!                            "))))))
+console.error(`Process ended with exit code: ${exitCode}             `)
+})
+
 //Anti-Dank memer
 //Message Handeller. Big. CHunky. Lollable.
 client.on('message', message => {
 	if(message.author.id === client.user.id) return;
 	if (message.bot) return
-	if (!message.guild) {
-		console.log(`DM: ${message.author.username}[${message.author.id}] > ${message}`)
-	if(!message.content.toLowerCase().startsWith(">login")) return
+	if ((!message.guild) && (!message.content == ">login")) {
+		console.log(`DM: ${message.author.username}[${message.author.id}] > ${message}`) 
+	}
+	if (message.content == ">login") {
+		client.commands.get("login").execute(message, message.content.slice("1").split(/ +/));
 	}
 	try {
 	var prefix = cprfxs[message.guild.id].prefix
-	} catch {
+	} catch (error) {
+	new errorreport(error)
 	var prefix = '>'
 	}
 	if (message.content.startsWith('>help') || message.content.startsWith('>prefix')) {
 	var prefix = '>'
 	}
+	var prefix = ">>" // TEMP FOR DEBUGGING REMOVE
 	updateStatus()
 	if (message.channel.id === '737148941652459572') {
 		var ai = require('./ai')
@@ -190,48 +218,43 @@ client.on('message', message => {
 		message.channel.send(JSON.parse(filecontents))
 		return;
 	}
-	if (message.content.startsWith('> ')) {
-		return
-		console.log(`Saved 1 Error Mistake`)
-		SessionErrorPreventorCount++;
-		console.log(`Session Error Fixer now at ${SessionErrorPreventorCount}`)
-		console.log("")
-		console.log(`From "${message.author.username}", With an id of "${message.author.id}" In Guild "${message.guild.name}", With id of "${message.guild.id}" With Message "${message.content}", At ${new Date()}`)
-		console.log("")
-	}
-	if (message.content === '42') {
-		message.channel.send('Congratulations! you have discovered the meaning of life!');
-	}
-	if (message.content === 'shut up') {
-		message.channel.send('Yeah, Shut up!');
-	}
-	if (message.content === 'nice hat') {
-		message.channel.send('Thanks. You also have a nice hat')
-	}
-
+	//if (message.content.startsWith('> ')) {                 // Old code, Don't mind me.
+	//	return
+	//	console.log(`Saved 1 Error Mistake`)
+	//	SessionErrorPreventorCount++;
+	//	console.log(`Session Error Fixer now at ${SessionErrorPreventorCount}`)
+	//	console.log("")
+	//	console.log(`From "${message.author.username}", With an id of "${message.author.id}" In Guild "${message.guild.name}", With id of "${message.guild.id}" With Message "${message.content}", At ${new Date()}`)
+	//	console.log("")
+	//}
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 try {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
+	try {
+	if (client.commands.get(command).dev == true) return message.channel.send("Sorry, but this command is in ALPHA mode. You cannot access this command right now.")
+	} catch {
+	}
 	client.commands.get(command).execute(message, args);
+		//Command Processed Counter
+		this.majiktrikbot.commandsProcessed = this.majiktrikbot.commandsProcessed + 1;
+		//fin
 } catch (error) {
 	if (error instanceof TypeError) {
 		if (error.message === `Cannot read property 'execute' of undefined`) {
 			return;
 		}
-		message.reply(`An error occured.`);
 	}
-	console.log(error.message);
-	console.log("")
-	console.log(colors.bgRed('[ Error Detector ]') + `[${message.guild.name} - ${message.guild.id}] ${message.author.tag}, ${message.author.id} at ${new Date()}`)
-	console.log(`${message}`)
-	console.log(`Error Code: ${error.code}`)
-	console.log(`Error: ${error.message} `)
-	console.log(`File that Caused Error: ${error.fileName}`)
-	console.log(`Line of Error: ${error.lineNumber}`)
-	console.log(`Full error: ${error}`)
-	console.log("")
-	message.reply(`An unknown Error Occured.`);
+	var report = new errorreport(error)
+	console.log(colors.red(report.log));
+	message.reply("Something went wrong. Please check the error reporter or console for more details. Thank you.")
 }
 }); 
+
 client.login(token)
+}
+
+} // Class End
+
+// Creates Instance
+new Majiktrikbot()

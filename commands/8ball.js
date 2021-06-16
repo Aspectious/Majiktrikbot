@@ -17,9 +17,9 @@ module.exports = {
                   var msg1 = Array(5); 
                   msg1[1] = "Yes";
                   msg1[2] = "No";
-                  msg1[3] = "Maybe :wink:";
+                  msg1[3] = "Maybe";
                   msg1[4] = "Without a doubt.";
-                  msg1[5] = "I Honestly Have No Idea :neutral_face:"
+                  msg1[5] = "I don't know..."
                   msg1[6] = "Highly Unlikely" 
                   var x = getRandomInt(0, 20);
                   if (x < 5){ 
