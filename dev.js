@@ -217,15 +217,6 @@ client.on('message', message => {
 		message.channel.send(JSON.parse(filecontents))
 		return;
 	}
-	//if (message.content.startsWith('> ')) {                 // Old code, Don't mind me.
-	//	return
-	//	console.log(`Saved 1 Error Mistake`)
-	//	SessionErrorPreventorCount++;
-	//	console.log(`Session Error Fixer now at ${SessionErrorPreventorCount}`)
-	//	console.log("")
-	//	console.log(`From "${message.author.username}", With an id of "${message.author.id}" In Guild "${message.guild.name}", With id of "${message.guild.id}" With Message "${message.content}", At ${new Date()}`)
-	//	console.log("")
-	//}
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 try {
 	const args = message.content.slice(prefix.length).split(/ +/);

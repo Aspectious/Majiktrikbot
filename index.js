@@ -170,7 +170,6 @@ client.on('message', message => {
 	if (message.content.startsWith('>help') || message.content.startsWith('>prefix')) {
 	var prefix = '>'
 	}
-	var prefix = ">>" // TEMP FOR DEBUGGING REMOVE
 	updateStatus()
 	if (message.channel.id === '737148941652459572') {
 		var ai = require('./ai')
