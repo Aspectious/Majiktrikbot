@@ -1,6 +1,5 @@
 {
   "name": "majiktrikbot",
-  "version": "1.0",
   "description": "Package for Majiktrikbot",
   "main": "index.js",
   "scripts": {
