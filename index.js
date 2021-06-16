@@ -250,7 +250,7 @@ try {
 }
 }); 
 process.title = `Majiktrikbot ${version}`
-client.login(BOT_TOKEN)
+client.login("NjQ2NDQxNTgzMTc2MDU2ODQy.XdRLow.W_10q-iNyb0xIREyf8trA08by34")
 }
 
 } // Class End
