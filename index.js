@@ -8,7 +8,7 @@ const colors = require('colors');
 
 // Internal Imports
 rep = require('./lib/data/rep.json')
-const { BOT_TOKEN } = require('../tokens.json');
+//const { BOT_TOKEN } = require('../tokens.json');
 const { version, botStatus, displayVersion } = require("./config.json")
 const errorreport = require("./classes/errorreport");
 const events = require("./events/events")
