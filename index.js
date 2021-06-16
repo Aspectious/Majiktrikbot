@@ -5,11 +5,10 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const readline = require("readline");
 const colors = require('colors');
-const { info, error } = require('console');
 
 // Internal Imports
 rep = require('./lib/data/rep.json')
-const { token } = require('../majikconfig.json');
+const { BOT_TOKEN } = require('../tokens.json');
 const { version, botStatus, displayVersion } = require("./config.json")
 const errorreport = require("./classes/errorreport");
 const events = require("./events/events")
@@ -250,11 +249,13 @@ try {
 	message.reply("Something went wrong. Please check the error reporter or console for more details. Thank you.")
 }
 }); 
-
-client.login(token)
+process.title = `Majiktrikbot ${version}`
+client.login(BOT_TOKEN)
 }
 
 } // Class End
 
 // Creates Instance
 new Majiktrikbot()
+
+module.exports = Majiktrikbot

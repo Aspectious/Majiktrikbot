@@ -1,0 +1,9 @@
+GOALS FOR 1.18 RELEASE
+
+- All the other shit on github
+
+- Clean up and remove old artifacts
+
+- GET TO WORK ON HEROKU FOR GODS SAKE
+
+- Release

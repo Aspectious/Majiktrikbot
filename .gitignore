@@ -1,10 +1,5 @@
 node_modules
--f lib
 .vs
 .vscode
-lib/data/money.json
 lib/data/latest.log
 logs
-lib/data/latest.log
-lib/data/latest.log
-lib/data/latest.log
