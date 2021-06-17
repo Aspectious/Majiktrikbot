@@ -252,7 +252,7 @@ process.title = `Majiktrikbot ${version}`
 client.login(process.env.TOKEN)
 }
 
-} // Class End
+} // Class End 
 
 // Creates Instance
 new Majiktrikbot()
