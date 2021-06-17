@@ -1,6 +1,6 @@
 const { execute } = require("./money");
 
-module.exports = {
+module.exports = { 
     name: 'lb',
     execute(message, args) {
     const fs = require('fs')
