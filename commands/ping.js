@@ -1,3 +1,4 @@
+const discord = require("discord.js")
 module.exports = {
 	name: 'ping',
 	description: 'Ping!',
