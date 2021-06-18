@@ -134,7 +134,7 @@ WINDOWSloghook.send(emergencyebed)
 	console.error(`Destroying Maager... Done.`)
 	console.error('Have a Nice Day!');
 	process.exit(0)
-})
+}) 
 
 
 process.on("exit", (exitCode) => {
