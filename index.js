@@ -138,7 +138,7 @@ WINDOWSloghook.send(emergencyebed)
 
 
 process.on("exit", (exitCode) => {
-console.error(colors.bgBlue(colors.white(colors.bold(colors.underline((
+console.error(
 	"                   IAN STUDIOS MAJIKTRIKBOT                        "
  + "\n                                                                   "
  + "\n     Oh dear. Something has gone Really, Really, REALLY Wrong.     "
@@ -146,7 +146,7 @@ console.error(colors.bgBlue(colors.white(colors.bold(colors.underline((
  + "\n                                                                   "
  + "\n  The discord client has been stopped. Please restart the client.  "
  + "\n                                                                   "
- + "\n                       Have a Nice day!                            "))))))
+ + "\n                       Have a Nice day!                            ")
 console.error(`Process ended with exit code: ${exitCode}             `)
 })
 
@@ -170,6 +170,7 @@ client.on('message', message => {
 	if (message.content.startsWith('>help') || message.content.startsWith('>prefix')) {
 	var prefix = '>'
 	}
+	const args = message.content.slice(prefix.length).split(/ +/);
 	updateStatus()
 	if (message.channel.id === '737148941652459572') {
 		var ai = require('./ai')
@@ -227,7 +228,6 @@ client.on('message', message => {
 	//}
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 try {
-	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	try {
 	if (client.commands.get(command).dev == true) return message.channel.send("Sorry, but this command is in ALPHA mode. You cannot access this command right now.")
