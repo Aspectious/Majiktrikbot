@@ -138,17 +138,18 @@ WINDOWSloghook.send(emergencyebed)
 
 
 process.on("exit", (exitCode) => {
-console.error(
-	"                   IAN STUDIOS MAJIKTRIKBOT                        "
- + "\n                                                                   "
- + "\n     Oh dear. Something has gone Really, Really, REALLY Wrong.     "
- + "\n         If you are seeing this the process is exiting.            "
- + "\n                                                                   "
- + "\n  The discord client has been stopped. Please restart the client.  "
- + "\n                                                                   "
- + "\n                       Have a Nice day!                            ")
-console.error(`Process ended with exit code: ${exitCode}             `)
-})
+	console.error(colors.bgBlue(colors.white(colors.bold(colors.underline((
+		"                   IAN STUDIOS MAJIKTRIKBOT                        "
+	 + "\n                                                                   "
+	 + "\n     Oh dear. Something has gone Really, Really, REALLY Wrong.     "
+	 + "\n         If you are seeing this the process is exiting.            "
+	 + "\n                                                                   "
+	 + "\n  The discord client has been stopped. Please restart the client.  "
+	 + "\n                                                                   "
+	 + "\n                       Have a Nice day!                            "))))))
+	console.error(`Process ended with exit code: ${exitCode}             `)
+	})
+	
 
 //Anti-Dank memer
 //Message Handeller. Big. CHunky. Lollable.
