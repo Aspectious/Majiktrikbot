@@ -16,7 +16,14 @@ const events = require("./events/events")
 // Class
 class Majiktrikbot {
 
-constructor() {
+constructor(token) {
+
+this.token = token;
+
+if (!token) {
+console.error(colors.red("Please Provide a Token. Read README.md for more information."))
+process.exit(0)
+}
 
 // Var Declaration
 var devmode;
@@ -100,7 +107,7 @@ client.on('guildCreate', (guild) => {
 //		console.log('understood.')
 //		cmd.close();
 //		cmdprompt()
-//		})
+//		}\
 //}
 
 
@@ -248,9 +255,9 @@ try {
 	console.log(colors.red(report.log));
 	message.reply("Something went wrong. Please check the error reporter or console for more details. Thank you.")
 }
-}); 
+});
 process.title = `Majiktrikbot ${version}`
-client.login(process.env.TOKEN)
+client.login(token)
 }
 
 } // Class End 
