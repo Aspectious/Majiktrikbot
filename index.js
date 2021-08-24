@@ -257,7 +257,7 @@ try {
 }
 });
 process.title = `Majiktrikbot ${version}`
-client.login(token)
+client.login(this.token)
 }
 
 } // Class End 
